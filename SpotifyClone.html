@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Clone</title>
+    <style>
+        /* Reset default margin and padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1db954;
+            color: white;
+            margin: 0;
+        }
+
+        /* Header Section */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #000;
+        }
+
+        header h1 {
+            font-size: 24px;
+        }
+
+        header nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 18px;
+        }
+
+        header nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Playlist Section */
+        .playlist {
+            margin: 30px auto;
+            width: 80%;
+            max-width: 800px;
+        }
+
+        .playlist h2 {
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+
+        .track {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background-color: #333;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        .track p {
+            font-size: 18px;
+            margin-right: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #1db954;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #1aa34a;
+        }
+
+        /* Footer Section */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #000;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>Spotify</h1>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Search</a>
+            <a href="#">Library</a>
+        </nav>
+    </header>
+
+    <!-- Playlist Section -->
+    <section class="playlist">
+        <h2>Featured Playlist</h2>
+        
+        <!-- Track 1 -->
+        <div class="track">
+            <p>Track 1: "Song Name 1"</p>
+            <button>Play</button>
+        </div>
+
+        <!-- Track 2 -->
+        <div class="track">
+            <p>Track 2: "Song Name 2"</p>
+            <button>Play</button>
+        </div>
+
+        <!-- Track 3 -->
+        <div class="track">
+            <p>Track 3: "Song Name 3"</p>
+            <button>Play</button>
+        </div>
+
+        <!-- Track 4 -->
+        <div class="track">
+            <p>Track 4: "Song Name 4"</p>
+            <button>Play</button>
+        </div>
+
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2025 Spotify Clone</p>
+    </footer>
+
+</body>
+</html>
