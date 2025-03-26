@@ -1,0 +1,23 @@
+class AuthenticationSystem {
+    private class Validator {
+        private String password = "admin123";
+
+        public boolean validate(String input) {
+            return password.equals(input);
+        }
+    }
+
+    public void login(String input) {
+        Validator validator = new Validator();
+        if (validator.validate(input)) {
+            System.out.println("Login Successful");
+        } else {
+            System.out.println("Incorrect Password");
+        }
+    }
+
+    public static void main(String[] args) {
+        AuthenticationSystem auth = new AuthenticationSystem();
+        auth.login("admin123");
+    }
+}
