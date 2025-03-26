@@ -1,0 +1,23 @@
+package library.books;
+public class Book {
+    public String title;
+}
+
+package library.members;
+public class Member {
+    public String name;
+}
+
+package library.utils;
+public class Utility {
+    public static int generateId() {
+        return (int) (Math.random() * 1000);
+    }
+}
+
+import static library.utils.Utility.generateId;
+public class LibraryManagementSystem {
+    public static void main(String[] args) {
+        System.out.println("Generated ID: " + generateId());
+    }
+}
