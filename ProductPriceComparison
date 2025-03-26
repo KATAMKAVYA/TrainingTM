@@ -1,0 +1,23 @@
+class ProductPriceComparison {
+    private String name;
+    private double price;
+
+    public ProductPriceComparison(String name, double price) {
+        this.name = name;
+        this.price = price;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        ProductPriceComparison product = (ProductPriceComparison) obj;
+        return Double.compare(product.price, price) == 0 && name.equals(product.name);
+    }
+
+    public static void main(String[] args) {
+        ProductPriceComparison p1 = new ProductPriceComparison("Laptop", 50000);
+        ProductPriceComparison p2 = new ProductPriceComparison("Laptop", 50000);
+        System.out.println(p1.equals(p2)); // true
+    }
+}
