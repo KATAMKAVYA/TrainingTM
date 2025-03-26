@@ -1,0 +1,38 @@
+abstract class OnlineShoppingSystem {
+    protected double price;
+
+    public OnlineShoppingSystem(double price) {
+        this.price = price;
+    }
+
+    public abstract double calculateDiscount();
+}
+
+class Electronics extends OnlineShoppingSystem {
+    public Electronics(double price) {
+        super(price);
+    }
+
+    @Override
+    public double calculateDiscount() {
+        return price * 0.1;
+    }
+}
+
+class Clothing extends OnlineShoppingSystem {
+    public Clothing(double price) {
+        super(price);
+    }
+
+    @Override
+    public double calculateDiscount() {
+        return price * 0.05;
+    }
+
+    public static void main(String[] args) {
+        OnlineShoppingSystem phone = new Electronics(50000);
+        OnlineShoppingSystem shirt = new Clothing(2000);
+        System.out.println(phone.calculateDiscount());
+        System.out.println(shirt.calculateDiscount());
+    }
+}
