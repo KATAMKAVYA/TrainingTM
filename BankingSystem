@@ -1,0 +1,30 @@
+class BankingSystem {
+    private double balance;
+    private String owner;
+
+    public BankingSystem() {
+        this(0, "Unknown");
+    }
+
+    public BankingSystem(double balance) {
+        this(balance, "Unknown");
+    }
+
+    public BankingSystem(double balance, String owner) {
+        this.balance = balance;
+        this.owner = owner;
+    }
+
+    public void display() {
+        System.out.println("Owner: " + owner + ", Balance: " + balance);
+    }
+
+    public static void main(String[] args) {
+        BankingSystem acc1 = new BankingSystem();
+        BankingSystem acc2 = new BankingSystem(1000);
+        BankingSystem acc3 = new BankingSystem(5000, "John Doe");
+        acc1.display();
+        acc2.display();
+        acc3.display();
+    }
+}
