@@ -1,0 +1,9 @@
+import java.util.Arrays;
+
+public class SortingExample {
+    public static void main(String[] args) {
+        int arr[] = {1, 8, 7, 4, 6, 3};
+        Arrays.sort(arr); // Sorting the array in ascending order
+        System.out.println("Sorted Array: " + Arrays.toString(arr));
+    }
+}
