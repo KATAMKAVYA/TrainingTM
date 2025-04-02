@@ -1,0 +1,48 @@
+import java.util.concurrent.*;
+
+class Flight {
+    private final String flightNumber;
+    private int availableSeats = 5;
+    
+    public Flight(String flightNumber) { this.flightNumber = flightNumber; }
+
+    public synchronized boolean bookSeat() {
+        if (availableSeats > 0) {
+            availableSeats--;
+            return true;
+        }
+        return false;
+    }
+
+    public String getFlightNumber() { return flightNumber; }
+}
+
+class FlightSearch implements Callable<String> {
+    private final String flightNumber;
+
+    public FlightSearch(String flightNumber) { this.flightNumber = flightNumber; }
+
+    @Override
+    public String call() {
+        return "Flight " + flightNumber + " found!";
+    }
+}
+
+public class FlightBookingSystem {
+    public static void main(String[] args) throws Exception {
+        ExecutorService executor = Executors.newFixedThreadPool(5);
+        Flight flight = new Flight("AA123");
+
+        Future<String> searchResult = executor.submit(new FlightSearch("AA123"));
+        System.out.println(searchResult.get());
+
+        synchronized (flight) {
+            if (flight.bookSeat()) {
+                System.out.println("Ticket booked successfully!");
+            } else {
+                System.out.println("No seats available!");
+            }
+        }
+        executor.shutdown();
+    }
+}
