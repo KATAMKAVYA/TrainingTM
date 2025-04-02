@@ -1,0 +1,40 @@
+import java.util.concurrent.*;
+import java.util.concurrent.locks.*;
+
+class Account {
+    private int balance;
+    private final Lock lock = new ReentrantLock();
+
+    public Account(int balance) { this.balance = balance; }
+
+    public boolean transfer(Account to, int amount) {
+        lock.lock();
+        try {
+            if (balance >= amount) {
+                balance -= amount;
+                to.deposit(amount);
+                return true;
+            }
+            return false;
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    public void deposit(int amount) { balance += amount; }
+
+    public int getBalance() { return balance; }
+}
+
+public class BankTransactionSystem {
+    public static void main(String[] args) {
+        Account acc1 = new Account(1000);
+        Account acc2 = new Account(500);
+
+        ExecutorService executor = Executors.newFixedThreadPool(3);
+        executor.execute(() -> acc1.transfer(acc2, 300));
+        executor.execute(() -> acc2.transfer(acc1, 200));
+
+        executor.shutdown();
+    }
+}
