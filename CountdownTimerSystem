@@ -1,0 +1,49 @@
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.concurrent.*;
+
+class FileDownloadTask implements Runnable {
+    private final CountDownLatch latch;
+    private final String fileName;
+
+    public FileDownloadTask(CountDownLatch latch, String fileName) {
+        this.latch = latch;
+        this.fileName = fileName;
+    }
+
+    @Override
+    public void run() {
+        try {
+            System.out.println("Downloading " + fileName);
+            Thread.sleep(2000);
+
+            FileWriter writer = new FileWriter(fileName);
+            writer.write("This is a downloaded file: " + fileName);
+            writer.close();
+
+            System.out.println(fileName + " downloaded and saved.");
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        } finally {
+            latch.countDown();
+        }
+    }
+}
+
+public class CountdownTimerSystem {
+    public static void main(String[] args) {
+        CountDownLatch latch = new CountDownLatch(3);
+        ExecutorService executor = Executors.newFixedThreadPool(3);
+
+        executor.execute(new FileDownloadTask(latch, "file1.txt"));
+        executor.execute(new FileDownloadTask(latch, "file2.txt"));
+        executor.execute(new FileDownloadTask(latch, "file3.txt"));
+
+        try {
+            latch.await();
+            System.out.println("All files downloaded. Merging...");
+        } catch (InterruptedException e) { Thread.currentThread().interrupt(); }
+
+        executor.shutdown();
+    }
+}
