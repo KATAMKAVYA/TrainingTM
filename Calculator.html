@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Calculator</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #e4e4e4;
+        }
+        .calculator {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .calculator input {
+            width: 240px;
+            height: 50px;
+            font-size: 24px;
+            text-align: right;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            background-color: #222;
+            color: #fff;
+            outline: none;
+        }
+        .calculator button {
+            width: 50px;
+            height: 50px;
+            font-size: 18px;
+            margin: 5px;
+            background-color: #f1f1f1;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            cursor: pointer;
+            color: #333;
+        }
+        .calculator button:hover {
+            background-color: #d9d9d9;
+        }
+        .calculator button.operator {
+            background-color: #f39c12;
+            color: white;
+        }
+        .calculator button.operator:hover {
+            background-color: #e67e22;
+        }
+        .calculator button.equal {
+            background-color: #3498db;
+            color: white;
+            width: 100%;
+        }
+        .calculator button.equal:hover {
+            background-color: #2980b9;
+        }
+        .calculator button.clear {
+            background-color: #e74c3c;
+            color: white;
+        }
+        .calculator button.clear:hover {
+            background-color: #c0392b;
+        }
+        .calculator button.delete {
+            background-color: #95a5a6;
+            color: white;
+        }
+        .calculator button.delete:hover {
+            background-color: #7f8c8d;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="calculator">
+        <input type="text" id="display" disabled>
+        <br>
+        <button onclick="appendToDisplay('1')">1</button>
+        <button onclick="appendToDisplay('2')">2</button>
+        <button onclick="appendToDisplay('3')">3</button>
+        <button onclick="appendToDisplay('+')" class="operator">+</button>
+        <br>
+        <button onclick="appendToDisplay('4')">4</button>
+        <button onclick="appendToDisplay('5')">5</button>
+        <button onclick="appendToDisplay('6')">6</button>
+        <button onclick="appendToDisplay('-')" class="operator">-</button>
+        <br>
+        <button onclick="appendToDisplay('7')">7</button>
+        <button onclick="appendToDisplay('8')">8</button>
+        <button onclick="appendToDisplay('9')">9</button>
+        <button onclick="appendToDisplay('*')" class="operator">*</button>
+        <br>
+        <button onclick="appendToDisplay('0')">0</button>
+        <button onclick="appendToDisplay('.')">.</button>
+        <button onclick="clearDisplay()" class="clear">C</button>
+        <button onclick="appendToDisplay('/')" class="operator">/</button>
+        <br>
+        <button onclick="deleteCharacter()" class="delete">Del</button>
+        <button onclick="calculateResult()" class="equal">=</button>
+    </div>
+
+    <script>
+
+        function appendToDisplay(value) {
+            document.getElementById('display').value += value;
+        }
+        function clearDisplay() {
+            document.getElementById('display').value = '';
+        }
+
+        function deleteCharacter() {
+            const display = document.getElementById('display');
+            display.value = display.value.slice(0, -1);
+        }
+
+    
+        function calculateResult() {
+            const display = document.getElementById('display');
+            try {
+                display.value = eval(display.value);
+            } catch (e) {
+                display.value = 'Error';
+            }
+        }
+    </script>
+
+</body>
+</html>
