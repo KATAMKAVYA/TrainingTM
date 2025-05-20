@@ -1,8 +1,0 @@
-com\aits\vehicle_service_management\dto\RegisterRequest.class
-com\aits\vehicle_service_management\model\User.class
-com\aits\vehicle_service_management\dto\AuthResponse.class
-com\aits\vehicle_service_management\util\JwtUtil.class
-com\aits\vehicle_service_management\dto\LoginRequest.class
-com\aits\vehicle_service_management\repository\UserRepository.class
-com\aits\vehicle_service_management\VehicleServiceManagementApplication.class
-com\aits\vehicle_service_management\model\Role.class
